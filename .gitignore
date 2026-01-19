@@ -1,0 +1,138 @@
+# ============================================
+# Python 相关
+# ============================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+.venv/
+venv/
+ENV/
+env/
+
+# ============================================
+# 配置文件（可能包含敏感信息）
+# ============================================
+.env
+.env.local
+.env.*.local
+*.env
+config.json
+config.local.json
+*.local.json
+.envrc
+
+# ============================================
+# 日志文件
+# ============================================
+*.log
+logs/
+*.log.*
+*.log.*
+
+# ============================================
+# 数据文件和用户数据（包含隐私信息）
+# ============================================
+data/
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+
+# 消息信息文件（包含用户ID、群组ID等隐私）
+msg_info_*.json
+*_info_*.json
+*msg*.json
+
+# 运行时数据和配置
+keyword_runtime_map.json
+runtime_*.json
+*_runtime_*.json
+
+# ============================================
+# 临时文件和缓存
+# ============================================
+*.tmp
+*.temp
+*.cache
+.cache/
+temp/
+tmp/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ============================================
+# IDE 和编辑器
+# ============================================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.project
+.pydevproject
+.settings/
+
+# ============================================
+# 可能包含个人路径的配置文件
+# 注意：检查代码中是否有硬编码的绝对路径
+# ============================================
+# config.py 中可能包含个人路径，建议审查
+
+# ============================================
+# 备份文件
+# ============================================
+*.bak
+*.backup
+*.old
+*~
+
+# ============================================
+# 系统文件
+# ============================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# ============================================
+# 指定的插件文件夹和文件（包含个人隐私信息）
+# ============================================
+# 包含人名、QQ号、群号的文件夹
+plugins/a002_heliemin/
+plugins/a003_2_graph_DouguaiMaocha/
+plugins/a003_3_graph_Douguailizhi/
+plugins/a003_heliemin_graph/
+plugins/a005_mls_mouth_ball/
+plugins/auto_001_bad_morning/
+plugins/a011_nikki_collect/
+plugins/keyword_005_keywords_graph/config.py
+plugins/keyword_005_keywords_graph/a001_all_graph/
+
+# 包含个人信息的图片文件
+**/png*liemin*.png
+**/*liemin*.png
+**/*heliemin*.png
+
+# 包含隐私信息的测试文件
+plugins/a005_mls_mouth_ball/a001_test.py
+plugins/test_001_迫害群友/
+
+# ============================================
+# 注意：以下文件代码中可能包含硬编码的QQ号/群号
+# 建议审查并修改为配置文件或环境变量
+# ============================================
+# plugins/a010_emoji_collect/__init__.py (包含群号: 937786461, 872057585)
+# plugins/auto_001_bad_morning/__init__.py (可能包含QQ号)
+# plugins/a005_mls_mouth_ball/__init__.py (可能包含QQ号)
+# plugins/test_001_迫害群友/__init__.py (可能包含QQ号)
