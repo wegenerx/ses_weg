@@ -149,7 +149,7 @@ class Config(BaseModel):
 - 支持自动撤回
 - 支持图片和文本混合回复
 
-### a013_global_guard - 全局守卫
+### auto_002_global_guard - 全局守卫
 
 控制机器人的访问权限。
 

@@ -569,6 +569,111 @@ async def reply(bot: Bot, origin_msg: UniMsg, event: MessageEvent):  # state: T_
         # group_white_list = ['937786461']
         # log_group_chat = '872057585'
 
+        # ========= 检查是否是合并转发消息 =========
+        # 检查消息中是否包含 forward 类型的消息段
+        is_forward = False
+        forward_id = None
+        
+        # 检查消息段中是否有 forward 类型
+        msg_segments = reply_msg_info.get("message", [])
+        for seg in msg_segments:
+            if seg.get("type") == "forward":
+                is_forward = True
+                # 尝试从 data 中获取 id，或者使用 message_id
+                forward_id = seg.get("data", {}).get("id") or reply_msg_id
+                break
+        
+        if is_forward and forward_id:
+            # 获取合并转发消息内容
+            try:
+                forward_data = await bot.get_forward_msg(message_id=forward_id)
+                if forward_data and "messages" in forward_data:
+                    forward_messages = forward_data["messages"]
+                    
+                    # find folder
+                    found = find_folder(ori_msg_text)
+                    if ori_msg_text not in BAN_SET and not is_single_punct(ori_msg_text) and found:
+                        path, folder_name = found
+                        
+                        total_count = len(forward_messages)
+                        processed_count = 0
+                        image_count = 0
+                        text_count = 0
+                        
+                        # 处理合并转发中的每条消息（仅一级）
+                        for idx, msg_item in enumerate(forward_messages):
+                            # 尝试多种数据结构：content.message 或直接 message
+                            msg_segments = []
+                            if "content" in msg_item and isinstance(msg_item["content"], dict):
+                                msg_segments = msg_item["content"].get("message", [])
+                            elif "message" in msg_item:
+                                msg_segments = msg_item["message"]
+                            
+                            if not isinstance(msg_segments, list):
+                                msg_segments = []
+                            
+                            # 处理图片
+                            for seg in msg_segments:
+                                if seg.get("type") == "image":
+                                    url = seg.get("data", {}).get("url")
+                                    if url:
+                                        try:
+                                            PILImage_ = get_image_from_url(url)
+                                            if PILImage_ is not None:
+                                                save_PIL(path, PILImage_)
+                                                image_count += 1
+                                        except Exception as e:
+                                            nonebot.logger.error(f"处理合并转发图片失败: {e}")
+                            
+                            # 处理文字
+                            text_parts = []
+                            for seg in msg_segments:
+                                if seg.get("type") == "text":
+                                    text_content = seg.get("data", {}).get("text", "").strip()
+                                    if text_content:
+                                        text_parts.append(text_content)
+                            
+                            if text_parts:
+                                combined_text = "".join(text_parts)
+                                if combined_text.strip():
+                                    append_text_record(path, combined_text)
+                                    text_count += 1
+                            
+                            processed_count += 1
+                            
+                            # 每处理25%发送进度消息（25%, 50%, 75%, 100%）
+                            progress_percent = (processed_count / total_count) * 100
+                            # 计算25%的里程碑点
+                            quarter_size = max(1, total_count // 4)
+                            # 在25%, 50%, 75%, 100%时发送进度
+                            if processed_count % quarter_size == 0 or processed_count == total_count:
+                                progress_msg = f"合并转发处理进度: {processed_count}/{total_count} ({progress_percent:.0f}%)"
+                                await send_notice(progress_msg)
+                        
+                        # 处理完成后发送总结
+                        summary_msg = f"合并转发处理完成：{ori_msg_text} ( {folder_name if 'collect' not in folder_name else 'null'} ) - 图片:{image_count} 文本:{text_count}"
+                        await send_notice(summary_msg)
+                        
+                        # 撤回消息
+                        if should_withdraw:
+                            try:
+                                await bot.delete_msg(message_id=reply_msg_id)
+                            except Exception as e:
+                                nonebot.logger.error(f"撤回合并转发消息失败: {e}")
+                            
+                            await asyncio.sleep(0.5)
+                            
+                            try:
+                                await bot.delete_msg(message_id=origin_msg.get_message_id())
+                            except Exception as e:
+                                nonebot.logger.error(f"撤回回复消息失败: {e}")
+                        
+                        return
+            except Exception as e:
+                nonebot.logger.error(f"处理合并转发消息失败: {e}")
+                await word.finish(f"处理合并转发消息失败: {e}")
+        
+        # ========= 原有的单条消息处理逻辑 =========
         # find folder
         found = find_folder(ori_msg_text)
         if ori_msg_text not in BAN_SET and not is_single_punct(ori_msg_text) and found:
