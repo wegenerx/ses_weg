@@ -1,0 +1,14 @@
+[project]
+name = "ses_weg"
+version = "0.1.0"
+description = "ses_weg"
+readme = "README.md"
+requires-python = ">=3.8, <4.0"
+
+[tool.nonebot]
+adapters = [
+    { name = "OneBot V11", module_name = "nonebot.adapters.onebot.v11" }
+]
+plugins = ["nonebot_plugin_status", "nonebot_plugin_remake", "nonebot_plugin_setu_now", "nonebot_plugin_longtu", "nonebot_plugin_ottohzys", "nonebot_plugin_lxns_maimai", "nonebot_plugin_arcaeabot", "nonebot_plugin_alconna", "nonebot_plugin_requests", "nonebot_plugin_jm", "nonebot_plugin_zxreport", "nonebot_plugin_multi_source_daily", "nonebot_plugin_nmcweather", "nonebot_plugin_arcaea_sticker"]
+plugin_dirs = ["ses_weg/plugins"]
+builtin_plugins = []

@@ -1,0 +1,16 @@
+{"date": "2026-01-22", "version": "v1.0.0", "content": "项目初始化：创建 NoneBot2 QQ 机器人，支持图像处理和关键词回复功能", "github": "https://github.com/wegenerx/ses_weg", "website": ""}
+{"date": "2026-01-22", "version": "v1.1.0", "content": "添加图像变换功能：对称、镜像、平移（支持上下左右四个方向）", "github": "https://github.com/wegenerx/ses_weg", "website": ""}
+{"date": "2026-01-22", "version": "v1.2.0", "content": "新增图像处理功能：黑白转换、模糊、锐化、边缘检测、去噪、球形畸变（支持凸透镜/凹透镜效果）", "github": "https://github.com/wegenerx/ses_weg", "website": ""}
+{"date": "2026-01-22", "version": "v1.3.0", "content": "添加合并转发消息处理功能：支持批量收集转发消息中的图片和文本", "github": "https://github.com/wegenerx/ses_weg", "website": ""}
+{"date": "2026-01-22", "version": "v1.4.0", "content": "实现 Bot 发言频率限制功能：群组 937786461 内 1 分钟内最多 3 次发言", "github": "https://github.com/wegenerx/ses_weg", "website": ""}
+{"date": "2026-01-22", "version": "v1.5.0", "content": "代码同步至 GitHub：https://github.com/wegenerx/ses_weg，完善 .gitignore 和 README.md", "github": "https://github.com/wegenerx/ses_weg", "website": ""}
+{"date": "2026-01-22", "version": "v1.6.0", "content": "添加发送内容记录功能：keyword_005 和 auto_001 插件发送的图片/文本自动记录到 location.txt", "github": "https://github.com/wegenerx/ses_weg", "website": ""}
+{"date": "2026-01-22", "version": "v1.7.0", "content": "实现内容归档功能：command_003_nsfw 插件支持将记录归档到指定文件夹（remove/nsfw/outdated）", "github": "https://github.com/wegenerx/ses_weg", "website": ""}
+{"date": "2026-01-23", "version": "v1.8.0", "content": "优化归档逻辑：归档文件保留在原文件夹的子目录中，便于管理和追溯来源", "github": "https://github.com/wegenerx/ses_weg", "website": ""}
+{"date": "2026-01-23", "version": "v1.9.0", "content": "添加权限控制：a010_emoji_collect 插件仅 superuser 可通过回复使用", "github": "https://github.com/wegenerx/ses_weg", "website": ""}
+{"date": "2026-01-26", "version": "v2.0.0", "content": "优化 emoji_collect 插件逻辑：支持所有人通过回复 'add ***' 格式消息添加内容，纯关键词回复仍仅 superuser 可用；关闭 help 和 release 插件的自动撤回功能；将日志级别调整为 INFO 以减少 DEBUG 输出", "github": "https://github.com/wegenerx/ses_weg", "website": ""}
+{"date": "2026-01-26", "version": "v2.1.0", "content": "增强 emoji_collect 插件：支持多个关键词（空格分隔），superuser 可用 '*** *** ***' 格式，普通用户可用 'add *** *** ***' 格式；回复内容将同时保存到所有匹配关键词的文件夹中", "github": "https://github.com/wegenerx/ses_weg", "website": ""}
+{"date": "2026-01-26", "version": "v2.2.0", "content": "重构 help 插件：实现子命令功能，支持 \\help <功能名> 查看详细帮助（photo、reply、reboot、ban_list、remove、release）；优化 global_guard 插件：支持多时间窗口频率限制（5秒1条、15秒2条、60秒3条），限制规则改为可配置字典参数", "github": "https://github.com/wegenerx/ses_weg", "website": ""}
+{"date": "2026-02-03", "version": "v2.3.0", "content": "修复图片保存覆盖问题：a010_emoji_collect 与 a012_del_message 在微秒相同时若文件名已存在，自动追加 (2)、(3) 等后缀，避免批量保存时覆盖已存在文件", "github": "https://github.com/wegenerx/ses_weg", "website": ""}
+{"date": "2026-02-14", "version": "v2.4.0", "content": "优化 auto_003_llmchat：被@或回复 bot 时 force_reply 必须回应、不设发送限制；非@/回复时 0.25 概率跳过分析，降低无针对性的回复频率", "github": "https://github.com/wegenerx/ses_weg", "website": ""}
+{"date": "2026-02-14", "version": "v2.5.0", "content": "优化 a010_emoji_collect：多图批量保存时，超过 many_images_ack_threshold（默认 5）张先发送「正在处理 X 张图片，请稍候…」，避免长时间下载导致 WebSocket 超时断开", "github": "https://github.com/wegenerx/ses_weg", "website": ""}

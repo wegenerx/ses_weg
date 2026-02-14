@@ -1,0 +1,3 @@
+# 启用 nonebot_plugin_bilichat 时使用：
+# bilireq 依赖的 ProxiesTypes 在 httpx 0.28+ 中已移除，需降级 httpx
+httpx>=0.24,<0.28

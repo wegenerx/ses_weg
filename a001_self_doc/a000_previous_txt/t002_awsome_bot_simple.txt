@@ -1,0 +1,8 @@
+name awsome_bot_simple
+
+完成!
+使用 poetry 或 pdm 等依赖管理工具添加以下包:
+  nonebot-adapter-console nonebot-adapter-walleq nonebot2[fastapi]
+运行以下命令来启动你的机器人:
+  cd awsome_bot_simple
+  nb run --reload

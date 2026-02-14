@@ -1,0 +1,156 @@
+name:
+awesome-bot-2
+
+完成!
+使用 poetry 或 pdm 等依赖管理工具添加以下包:
+  nonebot-adapter-console nonebot2[fastapi]
+运行以下命令来启动你的机器人:
+  cd awesome-bot-2
+  nb run --reload
+
+PS C:\Users\wegener>
+/echo hello world
+
+官方文档 https://nonebot.dev/docs/quick-start
+官方商店 https://nonebot.dev/store
+视频教程 https://www.bilibili.com/video/BV1984y1b7JY?p=2&vd_source=1ed18a3c6514ea4b8609e37dc0502454
+
+NoneBot 离线文档 (nonebot-plugin-docs)                                      - 在本地查看 NoneBot 文档
+biliav小程序转换器 (nonebot-plugin-biliav)                                  - 将用户发的av号或者bv号转成小程序返回
+analysis_bilibili (nonebot-plugin-analysis-bilibili)                        - 自动解析bilibili链接内容
+Nonebot2 Help Menu (nonebot-plugin-help)                                    - Nonebot2轻量级帮助插件
+Nonebot2 消息撤回插件 (nonebot-plugin-withdraw)                             - 用于让机器人撤回自己发出的消息
+nonebot_plugin_setu (nonebot-plugin-setu)                                   - 基于loliconImage Api的涩图插件，内置涩图
+                                                                              CD
+nb2chan (nb2chan)                                                           - Nonebot2酱推送
+词云 (nonebot-plugin-wordcloud)                                             - 利用群消息生成词云
+聊天记录 (nonebot-plugin-chatrecorder)                                      - 记录机器人收到和发出的消息
+pixiv.net p站查询图片 (nonebot-plugin-pixiv)                                - pixiv.net p站查询图片(支持动图和多图)
+语句抽象化 (nonebot-plugin-abstract)                                        - 能够将你的语句变得抽象起来~
+支付宝到账语音 (nonebot-plugin-alipayvoice)                                 - 发送支付宝到账语音, 支持金额范围为0.01~9
+                                                                              99999999999.99
+Ping (nonebot-plugin-ping)                                                  - 调用api，获取网站信息
+主动消息撤回 (nonebot-plugin-revoke)                                        - 让机器人撤回自己发出的消息
+XDU校园服务 (nonebot_plugin_xdu_support)                                    - Nonebot2插件，提供基础的西电校园服务，如
+                                                                              课表提醒，体育打卡查询及提醒，晨午晚检打
+                                                                              卡和马原测试等功能。
+impact (nonebot-plugin-impact)                                              - 让群友们眼前一黑的nonebot2淫趴插件
+为美好群聊献上爆炎 (nonebot-plugin-megumin)                                 - 现在，你的群友可以触发失传已久的爆裂魔法
+                                                                              了
+Spark_GPT (nonebot-plugin-spark-gpt)                                        - 将poe,chatgpt,slack claude,Newbing,Sydne
+                                                                              yBing,google bard,讯飞星火模型(SparkDesk
+                                                                              ),通义千问等接入qq,tg,kook(原开黑啦),dis
+                                                                              cord多平台用户绑定实现数据互通,并提供web
+                                                                              ui进行便捷配置,自适应文转图,实现预设人格
+                                                                              化bot的便捷创建,使用和管理
+猫猫虫咖波图片发送 (nonebot-plugin-capoo)                                   - 发送capoo指令后bot会随机发出一张capoo的
+                                                                              可爱表情包
+Sekai Stickers (nonebot-plugin-pjsk)                                        - 基于 NoneBot2 的 Project Sekai 表情包制
+                                                                              作插件
+女装 ! (nonebot-plugin-wearskirt)                                           - Nonebot 赛博女装插件
+nonebot-plugin-playercheck (nonebot-plugin-playercheck)                     - 一个查询群友音游成分的插件
+nonebot-plugin-maimaidx (nonebot-plugin-maimaidx)                           - 移植自 mai-bot 开源项目，基于 nonebot2
+                                                                              的街机音游 舞萌DX 的查询插件
+随机龙图 (nonebot-plugin-longtu)                                            - 2024年是龙年...我都准备好了
+Chikari_yinpa (nonebot-plugin-chikari-yinpa)                                - 一个普通的银趴插件
+
+
+
+
+
+
+
+
+
+
+
+
+
+[?] 项目名称: awesome-bot
+[?] 要使用哪些适配器? Console (基于终端的交互式适配器)
+[?] 要使用哪些驱动器? FastAPI (FastAPI 驱动器)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "c:\users\wegener\.local\bin\nb.exe\__main__.py", line 7, in <module>
+  File "C:\Users\wegener\pipx\venvs\nb-cli\Lib\site-packages\nb_cli\__main__.py", line 10, in main
+    anyio.run(cli_main, *args)
+  File "C:\Users\wegener\pipx\venvs\nb-cli\Lib\site-packages\anyio\_core\_eventloop.py", line 74, in run
+    return async_backend.run(func, args, {}, backend_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wegener\pipx\venvs\nb-cli\Lib\site-packages\anyio\_backends\_asyncio.py", line 2034, in run
+    return runner.run(wrapper())
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\wegener\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\wegener\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 650, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\wegener\pipx\venvs\nb-cli\Lib\site-packages\anyio\_backends\_asyncio.py", line 2022, in wrapper
+    return await func(*args)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\wegener\pipx\venvs\nb-cli\Lib\site-packages\nb_cli\__init__.py", line 35, in cli_main
+    return await run_sync(cli_sync)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wegener\pipx\venvs\nb-cli\Lib\site-packages\nb_cli\cli\utils.py", line 63, in wrapper
+    return await anyio.to_thread.run_sync(partial(func, *args, **kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wegener\pipx\venvs\nb-cli\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wegener\pipx\venvs\nb-cli\Lib\site-packages\anyio\_backends\_asyncio.py", line 2177, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\wegener\pipx\venvs\nb-cli\Lib\site-packages\anyio\_backends\_asyncio.py", line 859, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wegener\pipx\venvs\nb-cli\Lib\site-packages\click\core.py", line 1157, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wegener\pipx\venvs\nb-cli\Lib\site-packages\click\core.py", line 1078, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "C:\Users\wegener\pipx\venvs\nb-cli\Lib\site-packages\click\core.py", line 1688, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wegener\pipx\venvs\nb-cli\Lib\site-packages\click\core.py", line 1434, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wegener\pipx\venvs\nb-cli\Lib\site-packages\click\core.py", line 783, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wegener\pipx\venvs\nb-cli\Lib\site-packages\click\decorators.py", line 33, in new_func
+    return f(get_current_context(), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wegener\pipx\venvs\nb-cli\Lib\site-packages\nb_cli\cli\utils.py", line 71, in wrapper
+    return anyio.from_thread.run(partial(func, *args, **kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wegener\pipx\venvs\nb-cli\Lib\site-packages\anyio\from_thread.py", line 58, in run
+    return async_backend.run_async_from_thread(func, args, token=token)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wegener\pipx\venvs\nb-cli\Lib\site-packages\anyio\_backends\_asyncio.py", line 2217, in run_async_from_thread
+    return f.result()
+           ^^^^^^^^^^
+  File "D:\Users\wegener\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\wegener\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\wegener\pipx\venvs\nb-cli\Lib\site-packages\anyio\_backends\_asyncio.py", line 2204, in task_wrapper
+    return await func(*args)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\wegener\pipx\venvs\nb-cli\Lib\site-packages\nb_cli\cli\commands\project.py", line 207, in create
+    create_project(template, {"nonebot": context.variables}, output_dir)
+  File "C:\Users\wegener\pipx\venvs\nb-cli\Lib\site-packages\nb_cli\handlers\project.py", line 35, in create_project
+    cookiecutter(
+  File "C:\Users\wegener\pipx\venvs\nb-cli\Lib\site-packages\cookiecutter\main.py", line 182, in cookiecutter
+    result = generate_files(
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\wegener\pipx\venvs\nb-cli\Lib\site-packages\cookiecutter\generate.py", line 320, in generate_files
+    project_dir, output_directory_created = render_and_create_dir(
+                                            ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\wegener\pipx\venvs\nb-cli\Lib\site-packages\cookiecutter\generate.py", line 259, in render_and_create_dir
+    raise OutputDirExistsException(msg)
+cookiecutter.exceptions.OutputDirExistsException: Error: "awesome-bot" directory already exists
+PS C:\Users\wegener>

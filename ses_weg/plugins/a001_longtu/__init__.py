@@ -1,0 +1,111 @@
+# --------------- basic info --------------- *
+# auther: wegener
+# time & date: 2024/11/15, 19:41
+# project: a002_编译.py, PyCharm, temp
+iii = 0
+
+
+# --------------- debug-func --------------- *
+def aa():
+    print("a try\n")
+
+
+def bb():
+    global iii
+    print("try order %d \n" % (iii))
+    iii = iii + 1
+
+
+# --------------- information if it's copied--------------- *
+
+# * website of the project:
+# * name of the original author(can be LLM):
+
+# ------------------------------end predefine------------------------------
+
+# start import --- *
+import math
+# end import ----- *
+import random
+from httpx import AsyncClient, ReadTimeout, ConnectError
+from io import BytesIO
+from nonebot import on_keyword
+from nonebot import on_command
+from nonebot.exception import FinishedException
+from nonebot.adapters.onebot.v11 import Bot, MessageEvent, MessageSegment
+from nonebot.plugin import PluginMetadata
+from nonebot.log import logger
+from .config import Config
+
+__version__ = "0.1.1.post1"
+__plugin_meta__ = PluginMetadata(
+    name="a001_longtu",
+    description="2024年是龙年...我都准备好了",
+    usage="使用命令：龙龙，龙图，dragon [数量]",
+    homepage="https://github.com/Perseus037/nonebot_plugin_longtu",
+    type="application",
+    config=Config,
+    supported_adapters={"~onebot.v11"},
+)
+
+dragon = on_keyword(keywords={"龙龙", "龙图", "dragon"}, #, '随个af'},
+                    priority=5)
+
+
+@dragon.handle()
+async def handle_first_receive(bot: Bot, event: MessageEvent):
+    logger.info(f"最大图片数量：{config.max_dragons}")
+    message_text = event.get_plaintext().strip()
+    args = message_text.split()
+    num_dragons = 1
+
+    if len(args) > 1 and args[1].isdigit():
+        requested_num_dragons = int(args[1])
+        if requested_num_dragons > config.max_dragons:
+            await bot.send(event, f"无法发送超过 {config.max_dragons} 张图片。")
+            return
+        num_dragons = requested_num_dragons
+
+    base_url = "https://git.acwing.com/Est/dragon/-/raw/main/"
+    extensions = ['.jpg', '.png', '.gif']
+
+    for _ in range(num_dragons):
+        batch_choice = random.choice(['batch1/', 'batch2/', 'batch3/'])
+        if batch_choice == 'batch1/':
+            selected_image_number = random.randint(1, 500)
+        elif batch_choice == 'batch2/':
+            selected_image_number = random.randint(501, 1000)
+        else:
+            selected_image_number = random.randint(1001, 1516)
+
+        for ext in extensions:
+            image_url = f"{base_url}{batch_choice}dragon_{selected_image_number}_{ext}"
+            try:
+                async with AsyncClient() as client:
+                    resp = await client.get(image_url, timeout=5.0)
+                    print('type(resp)=' + str(type(resp)))
+
+                if resp.status_code == 200:
+                    picbytes = BytesIO(resp.content).getvalue()
+                    print('type(picbytes)=' + str(type(picbytes)))
+                    print('type(resp.content)=' + str(type(resp.content)))
+                    print('type(BytesIO(resp.content))=' + str(type(BytesIO(resp.content))))
+                    await dragon.send(MessageSegment.image(picbytes))
+                    break
+
+            except FinishedException:
+                raise
+
+            except ConnectError:
+                logger.error(f"连接错误：无法访问 {image_url}")
+                continue
+
+            except ReadTimeout:
+                logger.error(f"读取超时：{image_url}")
+                continue
+
+            except Exception as e:
+                logger.error(f"输出异常：{e}")
+                if ext == extensions[-1]:
+                    await dragon.send("龙龙现在出不来了，稍后再试试吧~")
+                break
